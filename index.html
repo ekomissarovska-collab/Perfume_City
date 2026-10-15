@@ -19,20 +19,20 @@
 </head>
 <body class="bg-[#FDFBFB] min-h-screen flex flex-col justify-between">
 
-    <!-- НАЛАШТУВАННЯ TELEGRAM БОТА (ВСТАВТЕ СВОЇ ДАНІ ТУТ) -->
+    <!-- НАЛАШТУВАННЯ TELEGRAM БОТА -->
     <script>
         const TG_BOT_TOKEN = 'ТУТ_ВАШ_ТОКЕН_БОТА';
         const TG_CHAT_ID = 'ТУТ_ВАШ_CHAT_ID';
     </script>
 
-    <!-- Шапка сайту -->
+    <!-- Шапка -->
     <header class="sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-rose-100 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <div class="flex items-center space-x-3">
                 <h1 class="text-2xl sm:text-3xl font-bold tracking-wider text-rose-900 uppercase">Парфюм Маркет</h1>
             </div>
             <div>
-                <button onclick="toggleCart()" class="relative bg-rose-50 hover:bg-rose-100 text-rose-900 px-5 py-2.5 rounded-full font-medium transition flex items-center space-x-2 border border-rose-200">
+                <button onclick="toggleCart()" class="relative bg-rose-50 hover:bg-rose-100 text-rose-900 px-5 py-2.5 rounded-full font-medium transition flex items-center space-x-2 border border-rose-200 cursor-pointer">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
                     </svg>
@@ -43,9 +43,8 @@
         </div>
     </header>
 
-    <!-- Головний контент -->
+    <!-- Головний баннер та каталог -->
     <main class="flex-grow">
-        <!-- Баннер -->
         <section class="bg-gradient-to-b from-rose-50/60 to-transparent py-12 px-4 text-center">
             <div class="max-w-3xl mx-auto">
                 <h2 class="text-3xl sm:text-4xl font-serif font-bold text-rose-950 mb-4">Оберіть свій ідеальний парфумований гель із нашої вишуканої колекції</h2>
@@ -53,10 +52,9 @@
             </div>
         </section>
 
-        <!-- Каталог товарів -->
         <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
             <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-                <!-- Товари генеруються через JS -->
+                <!-- Картки товарів завантажуються тут через JS -->
             </div>
         </section>
     </main>
@@ -68,17 +66,17 @@
             <div class="w-screen max-w-md bg-white shadow-2xl flex flex-col">
                 <div class="flex items-center justify-between px-6 py-4 border-b border-rose-100 bg-rose-50/50">
                     <h3 class="text-xl font-serif font-bold text-rose-950">Ваш кошик</h3>
-                    <button onclick="toggleCart()" class="text-gray-400 hover:text-gray-600 text-2xl">&times;</button>
+                    <button onclick="toggleCart()" class="text-gray-400 hover:text-gray-600 text-2xl cursor-pointer">&times;</button>
                 </div>
                 <div id="cart-items" class="flex-1 overflow-y-auto p-6 space-y-4">
-                    <!-- Товари в кошику -->
+                    <p class="text-center text-gray-500 py-8">Ваш кошик порожній</p>
                 </div>
                 <div class="border-t border-rose-100 p-6 bg-rose-50/30">
                     <div class="flex justify-between text-lg font-bold text-rose-950 mb-4">
                         <span>Разом:</span>
                         <span id="cart-total">0 грн</span>
                     </div>
-                    <button onclick="openCheckout()" class="w-full bg-rose-900 hover:bg-rose-950 text-white py-3 rounded-xl font-medium transition shadow-md">
+                    <button onclick="openCheckout()" class="w-full bg-rose-900 hover:bg-rose-950 text-white py-3 rounded-xl font-medium transition shadow-md cursor-pointer">
                         Оформити замовлення
                     </button>
                 </div>
@@ -86,7 +84,7 @@
         </div>
     </div>
 
-    <!-- Модальне вікно оформлення замовлення -->
+    <!-- Модальне вікно замовлення -->
     <div id="checkout-modal" class="fixed inset-0 z-50 overflow-y-auto hidden flex items-center justify-center p-4">
         <div class="absolute inset-0 bg-black/50 backdrop-blur-sm" onclick="closeCheckout()"></div>
         <div class="relative bg-white rounded-2xl max-w-lg w-full p-6 sm:p-8 shadow-2xl z-10">
@@ -105,36 +103,36 @@
                     <textarea id="order-address" required rows="2" class="w-full px-4 py-2.5 rounded-xl border border-rose-200 focus:outline-none focus:ring-2 focus:ring-rose-400"></textarea>
                 </div>
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Коментар до замовлення (необов'язково)</label>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Коментар (необов'язково)</label>
                     <input type="text" id="order-comment" class="w-full px-4 py-2.5 rounded-xl border border-rose-200 focus:outline-none focus:ring-2 focus:ring-rose-400">
                 </div>
                 <div class="flex space-x-4 pt-4">
-                    <button type="button" onclick="closeCheckout()" class="w-1/2 bg-gray-100 hover:bg-gray-200 text-gray-700 py-3 rounded-xl font-medium transition">Скасувати</button>
-                    <button type="submit" class="w-1/2 bg-rose-900 hover:bg-rose-950 text-white py-3 rounded-xl font-medium transition shadow-md">Підтвердити</button>
+                    <button type="button" onclick="closeCheckout()" class="w-1/2 bg-gray-100 hover:bg-gray-200 text-gray-700 py-3 rounded-xl font-medium transition cursor-pointer">Скасувати</button>
+                    <button type="submit" class="w-1/2 bg-rose-900 hover:bg-rose-950 text-white py-3 rounded-xl font-medium transition shadow-md cursor-pointer">Підтвердити</button>
                 </div>
             </form>
         </div>
     </div>
 
-    <!-- Футер -->
+    <!-- Підвал -->
     <footer class="bg-white border-t border-rose-100 py-8 text-center text-sm text-gray-500">
         <p>&copy; 2026 Парфюм Маркет. Усі права захищені.</p>
     </footer>
 
-    <!-- Логіка сайту -->
+    <!-- Логіка скрипту -->
     <script>
         const PRODUCTS = [
             { id: 1, name: "Гель Tom Ford - Black Orchid", desc: "Розкішний парфумований гель для душу з вишуканими нотами чорної орхідеї, спецій та темного шоколаду.", price: 250, volume: "250 мл", image: "1.jpeg" },
-            { id: 2, name: "Гель HFC - Devil's Intrigue", desc: "Звабливий гель з чуттєвими нотами білого чаю, османтусу, сандалу талодкого ванільного шлейфу.", price: 250, volume: "250 мл", image: "2.jpeg" },
+            { id: 2, name: "Гель HFC - Devil's Intrigue", desc: "Звабливий гель з чуттєвими нотами білого чаю, османтусу, сандалу та солодкого ванільного шлейфу.", price: 250, volume: "250 мл", image: "2.jpeg" },
             { id: 3, name: "Гель Lattafa - Yara", desc: "Ніжний та солодкий парфумований гель з ароматом тропічних фруктів, ванілі, орхідеї та мускусу.", price: 250, volume: "250 мл", image: "3.jpeg" },
-            { id: 4, name: "Гель Carolina Herrera - Good Girl Blush", desc: "Вінтончений романтичний аромат з нотами півонії, рожевої води та чуттєвої ванілі.", price: 250, volume: "250 мл", image: "4.jpeg" },
+            { id: 4, name: "Гель Carolina Herrera - Good Girl Blush", desc: "Витончений романтичний аромат з нотами півонії, рожевої води та чуттєвої ванілі.", price: 250, volume: "250 мл", image: "4.jpeg" },
             { id: 5, name: "Гель Richard - White Chocola", desc: "Неймовірно затишний та солодкий аромат білого шоколаду, ванілі та легких молочних нот.", price: 250, volume: "250 мл", image: "5.jpeg" },
             { id: 6, name: "Гель Montale - Intense Cafe", desc: "Яскравий парфумований гель із насиченими нотами кави, обсмажених зерен, троянди та білого мускусу.", price: 250, volume: "250 мл", image: "6.jpeg" },
             { id: 7, name: "Гель Creed - Aventus for her", desc: "Свіжий та елегантний фруктово-шипровий аромат із нотами зеленого яблука, бергамоту та троянди.", price: 250, volume: "250 мл", image: "7.jpeg" },
             { id: 8, name: "Гель Attar - Hayati", desc: "Соковитий та спокусливий аромат стиглої малини, ягід, морозива та збитих вершків.", price: 250, volume: "250 мл", image: "8.jpeg" },
             { id: 9, name: "Гель YSL - Black Opium", desc: "Енергійний та чуттєвий аромат чорної кави, білих квітів та солодкої ванілі.", price: 250, volume: "250 мл", image: "9.jpeg" },
             { id: 10, name: "Гель Dior - Sauvage", desc: "Шляхетний та свіжий деревно-пряний аромат з нотами бергамоту, перцю та амброксану.", price: 250, volume: "250 мл", image: "10.jpeg" },
-            { id: 11, name: "Гель By Kilian - Angel's Share", desc: "Вишуканий гурманський аромат із нотами коньяку, кориці, дубового деревини та праліне.", price: 250, volume: "250 мл", image: "11.jpeg" },
+            { id: 11, name: "Гель By Kilian - Angel's Share", desc: "Вишуканий гурманський аромат із нотами коньяку, кориці, дубової деревини та праліне.", price: 250, volume: "250 мл", image: "11.jpeg" },
             { id: 12, name: "Гель Terenzi - Kirke", desc: "Екзотичний фруктовий мікс із нотами маракуї, персика, груші та стійкого мускусу.", price: 250, volume: "250 мл", image: "12.jpeg" }
         ];
 
@@ -142,10 +140,12 @@
 
         function renderProducts() {
             const grid = document.getElementById('products-grid');
+            if (!grid) return;
+            
             grid.innerHTML = PRODUCTS.map(p => `
                 <div class="bg-white rounded-2xl border border-rose-100 shadow-sm hover:shadow-md transition duration-300 flex flex-col overflow-hidden group">
-                    <div class="relative w-full h-64 bg-rose-50/50 overflow-hidden">
-                        <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover">
+                    <div class="relative w-full h-64 bg-rose-50 overflow-hidden flex items-center justify-center">
+                        <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'100%\' height=\'100%\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%23e11d48\' stroke-width=\'1\'><rect width=\'100%\' height=\'100%\' fill=\'%23fff1f2\'/><path d=\'M10 2h4v2h-4zM6 6h12v14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V6z\'/></svg>';">
                     </div>
                     <div class="p-6 flex flex-col flex-grow justify-between">
                         <div>
@@ -155,8 +155,8 @@
                         </div>
                         <div class="flex items-center justify-between pt-4 border-t border-rose-50">
                             <span class="text-xl font-bold text-rose-900">${p.price} грн</span>
-                            <button onclick="addToCart(${p.id})" class="bg-rose-50 hover:bg-rose-100 text-rose-900 px-4 py-2.5 rounded-xl font-medium transition text-sm flex items-center space-x-1.5 border border-rose-200">
-                                <span>Додати в кошик</span>
+                            <button onclick="addToCart(${p.id})" class="bg-rose-50 hover:bg-rose-100 text-rose-900 px-4 py-2.5 rounded-xl font-medium transition text-sm border border-rose-200 cursor-pointer">
+                                Додати в кошик
                             </button>
                         </div>
                     </div>
@@ -165,8 +165,7 @@
         }
 
         function toggleCart() {
-            const drawer = document.getElementById('cart-drawer');
-            drawer.classList.toggle('hidden');
+            document.getElementById('cart-drawer').classList.toggle('hidden');
         }
 
         function addToCart(productId) {
@@ -201,15 +200,15 @@
             }
 
             itemsContainer.innerHTML = cart.map(item => `
-                flex items-center justify-between bg-rose-50/30 p-3 rounded-xl border border-rose-100">
+                <div class="flex items-center justify-between bg-rose-50/30 p-3 rounded-xl border border-rose-100">
                     <div class="flex-1 pr-3">
                         <h4 class="font-serif font-bold text-rose-950 text-sm">${item.name}</h4>
                         <div class="text-xs text-gray-500">${item.price} грн × ${item.quantity}</div>
                     </div>
                     <div class="flex items-center space-x-2">
-                        <button onclick="changeQty(${item.id}, -1)" class="w-7 h-7 bg-white border border-rose-200 rounded-lg text-rose-900 font-bold flex items-center justify-center hover:bg-rose-50">-</button>
+                        <button onclick="changeQty(${item.id}, -1)" class="w-7 h-7 bg-white border border-rose-200 rounded-lg text-rose-900 font-bold flex items-center justify-center hover:bg-rose-50 cursor-pointer">-</button>
                         <span class="text-sm font-medium w-5 text-center">${item.quantity}</span>
-                        <button onclick="changeQty(${item.id}, 1)" class="w-7 h-7 bg-white border border-rose-200 rounded-lg text-rose-900 font-bold flex items-center justify-center hover:bg-rose-50">+</button>
+                        <button onclick="changeQty(${item.id}, 1)" class="w-7 h-7 bg-white border border-rose-200 rounded-lg text-rose-900 font-bold flex items-center justify-center hover:bg-rose-50 cursor-pointer">+</button>
                     </div>
                 </div>
             `).join('');
@@ -261,7 +260,7 @@
             message += `\n💰 Загальна сума: ${totalPrice} грн`;
 
             if (TG_BOT_TOKEN === 'ТУТ_ВАШ_ТОКЕН_БОТА' || TG_CHAT_ID === 'ТУТ_ВАШ_CHAT_ID') {
-                alert('Будь ласка, вкажіть ваш дійсний TG_BOT_TOKEN та TG_CHAT_ID у коді сайту!');
+                alert('Будь ласка, вкажіть ваш дійсний TG_BOT_TOKEN та TG_CHAT_ID у коді файлу!');
                 return;
             }
 
@@ -282,16 +281,19 @@
                     closeCheckout();
                     document.getElementById('order-form').reset();
                 } else {
-                    alert('Помилка відправки. Перевірте правильність токена та чат ID бота.');
+                    alert('Помилка відправки. Перевірте токен та chat ID бота.');
                 }
             } catch (err) {
-                alert('Сталася помилка з'єднаня з Telegram.');
+                alert('Помилка з\'єднання з сервером Telegram.');
             }
         }
 
-        renderProducts();
+        // Автоматичний запуск після завантаження сторінки
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', renderProducts);
+        } else {
+            renderProducts();
+        }
     </script>
 </body>
 </html>
-
-```
