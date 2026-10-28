@@ -19,10 +19,10 @@
 </head>
 <body class="bg-[#FDFBFB] min-h-screen flex flex-col justify-between">
 
-    <!-- НАЛАШТУВАННЯ TELEGRAM БОТА -->
+    <!-- НАЛАШТУВАННЯ TELEGRAM БОТА (ВСТАВТЕ СВОЇ ДАНІ ТУТ) -->
     <script>
-        const TG_BOT_TOKEN = '8449338128:AAEI8pPvhqT3qDxCKfwELvq8IGp4BKqdzD8';
-        const TG_CHAT_ID = '443675424';
+        const TG_BOT_TOKEN = 'ТУТ_ВСТАВТЕ_ТОКЕН_ВАШОГО_БОТА'; // Наприклад: '123456789:ABCdef...'
+        const TG_CHAT_ID = 'ТУТ_ВСТАВТЕ_ВАШ_CHAT_ID';       // Наприклад: '987654321'
     </script>
 
     <!-- Шапка -->
@@ -123,7 +123,7 @@
     <script>
         const PRODUCTS = [
             { id: 1, name: "Гель Tom Ford - Black Orchid", desc: "Розкішний парфумований гель для душу з вишуканими нотами чорної орхідеї, спецій та темного шоколаду.", price: 250, volume: "250 мл", image: "1.jpeg" },
-            { id: 2, name: "Гель HFC - Devil's Intrigue", desc: "Звабливий гель з чуттєвими нотами білого чаю, османтусу, сандалу та солодкого ванільного шлейфу.", price: 250, volume: "250 мл", image: "2 .jpeg" },
+            { id: 2, name: "Гель HFC - Devil's Intrigue", desc: "Звабливий гель з чуттєвими нотами білого чаю, османтусу, сандалу та солодкого ванільного шлейфу.", price: 250, volume: "250 мл", image: "2.jpeg" },
             { id: 3, name: "Гель Lattafa - Yara", desc: "Ніжний та солодкий парфумований гель з ароматом тропічних фруктів, ванілі, орхідеї та мускусу.", price: 250, volume: "250 мл", image: "3.jpeg" },
             { id: 4, name: "Гель Carolina Herrera - Good Girl Blush", desc: "Витончений романтичний аромат з нотами півонії, рожевої води та чуттєвої ванілі.", price: 250, volume: "250 мл", image: "4.jpeg" },
             { id: 5, name: "Гель Richard - White Chocola", desc: "Неймовірно затишний та солодкий аромат білого шоколаду, ванілі та легких молочних нот.", price: 250, volume: "250 мл", image: "5.jpeg" },
@@ -259,17 +259,17 @@
             const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
             message += `\n💰 Загальна сума: ${totalPrice} грн`;
 
-            if (TG_BOT_TOKEN === '8449338128:AAEI8pPvhqT3qDxCKfwELvq8IGp4BKqdzD8' || TG_CHAT_ID === '443675424') {
+            if (TG_BOT_TOKEN.includes('ТУТ_ВСТАВТЕ') || TG_CHAT_ID.includes('ТУТ_ВСТАВТЕ')) {
                 alert('Будь ласка, вкажіть ваш дійсний TG_BOT_TOKEN та TG_CHAT_ID у коді файлу!');
                 return;
             }
 
             try {
-                const response = await fetch(`https://api.telegram.org/bot{8449338128:AAEI8pPvhqT3qDxCKfwELvq8IGp4BKqdzD8}/sendMessage`, 
+                const response = await fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
-                        chat_id: 443675424,
+                        chat_id: TG_CHAT_ID,
                         text: message
                     })
                 });
