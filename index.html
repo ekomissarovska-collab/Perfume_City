@@ -21,7 +21,7 @@
 
     <!-- УВАГА: пряме зберігання токена в HTML небезпечне. Використовуйте лише тестово. -->
     <script>
-        const TG_BOT_TOKEN = '8449338128:AAEI8pPvhqT3qDxCKfwELvq8IGp4BKqdzD8';
+        const TG_BOT_TOKEN = 'ВСТАВТЕ_НОВИЙ_ТОКЕН_БОТА';
         const TG_CHAT_ID = '443675424';
     </script>
 
@@ -245,7 +245,7 @@
                 alert('Ваш кошик порожній.');
                 return;
             }
-            if (!TG_BOT_TOKEN || TG_BOT_TOKEN === '8449338128:AAEI8pPvhqT3qDxCKfwELvq8IGp4BKqdzD8') {
+            if (!TG_BOT_TOKEN || TG_BOT_TOKEN === 'ВСТАВТЕ_НОВИЙ_ТОКЕН_БОТА') {
                 alert('Вставте новий токен Telegram-бота в налаштуваннях коду.');
                 return;
             }
@@ -257,19 +257,19 @@
             const address = document.getElementById('order-address').value.trim();
             const comment = document.getElementById('order-comment').value.trim();
 
-            let message = '🛍 Нове замовлення у Парфюм Маркет!\\n\\n';
-            message += `👤 Ім'я: ${name}\\n`;
-            message += `📞 Телефон: ${phone}\\n`;
-            message += `📍 Адреса: ${address}\\n`;
-            if (comment) message += `💬 Коментар: ${comment}\\n`;
-            message += '\\n🛒 Товари:\\n';
+            let message = '🛍 Нове замовлення у Парфюм Маркет!\n\n';
+            message += `👤 Ім'я: ${name}\n`;
+            message += `📞 Телефон: ${phone}\n`;
+            message += `📍 Адреса: ${address}\n`;
+            if (comment) message += `💬 Коментар: ${comment}\n`;
+            message += '\n🛒 Товари:\n';
 
             cart.forEach((item, index) => {
-                message += `${index + 1}. ${item.name} (${item.volume}) — ${item.quantity} шт. по ${item.price} грн\\n`;
+                message += `${index + 1}. ${item.name} (${item.volume}) — ${item.quantity} шт. по ${item.price} грн\n`;
             });
 
             const totalPrice = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-            message += `\\n💰 Загальна сума: ${totalPrice} грн`;
+            message += `\n💰 Загальна сума: ${totalPrice} грн`;
 
             submitButton.disabled = true;
             submitButton.textContent = 'Надсилаємо...';
@@ -300,6 +300,7 @@
             }
         }
 
+        // Пряма відправка через Telegram Bot API; Google Apps Script не використовується.
         // Автоматичний запуск після завантаження сторінки
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', renderProducts);
