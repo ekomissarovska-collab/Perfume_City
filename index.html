@@ -21,8 +21,8 @@
 
     <!-- НАЛАШТУВАННЯ TELEGRAM БОТА (ВСТАВТЕ СВОЇ ДАНІ ТУТ) -->
     <script>
-        const TG_BOT_TOKEN = 'ТУТ_ВСТАВТЕ_ТОКЕН_ВАШОГО_БОТА'; // Наприклад: '123456789:ABCdef...'
-        const TG_CHAT_ID = 'ТУТ_ВСТАВТЕ_ВАШ_CHAT_ID';       // Наприклад: '987654321'
+        const TG_BOT_TOKEN = '8449338128:AAEI8pPvhqT3qDxCKfwELvq8IGp4BKqdzD8'; // Наприклад: '123456789:ABCdef...'
+        const TG_CHAT_ID = '443675424';       // Наприклад: '987654321'
     </script>
 
     <!-- Шапка -->
@@ -259,7 +259,7 @@
             const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
             message += `\n💰 Загальна сума: ${totalPrice} грн`;
 
-            if (TG_BOT_TOKEN.includes('ТУТ_ВСТАВТЕ') || TG_CHAT_ID.includes('ТУТ_ВСТАВТЕ')) {
+            if (TG_BOT_TOKEN.includes('8449338128:AAEI8pPvhqT3qDxCKfwELvq8IGp4BKqdzD8') || TG_CHAT_ID.includes('443675424')) {
                 alert('Будь ласка, вкажіть ваш дійсний TG_BOT_TOKEN та TG_CHAT_ID у коді файлу!');
                 return;
             }
