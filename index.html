@@ -19,10 +19,10 @@
 </head>
 <body class="bg-[#FDFBFB] min-h-screen flex flex-col justify-between">
 
-    <!-- НАЛАШТУВАННЯ TELEGRAM БОТА (ВСТАВТЕ СВОЇ ДАНІ ТУТ) -->
+    <!-- НАЛАШТУВАННЯ TELEGRAM БОТА -->
     <script>
-    const TG_BOT_TOKEN = '123456789:ABCdefGhIJKlmNoPQRsTUVwxyZ'; 
-const TG_CHAT_ID = '443675424';
+        const TG_BOT_TOKEN = 'ТУТ_ВСТАВТЕ_ТОКЕН_ВАШОГО_БОТА'; 
+        const TG_CHAT_ID = 'ТУТ_ВСТАВТЕ_ВАШ_CHAT_ID';
     </script>
 
     <!-- Шапка -->
@@ -258,11 +258,6 @@ const TG_CHAT_ID = '443675424';
 
             const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
             message += `\n💰 Загальна сума: ${totalPrice} грн`;
-
-            if (TG_BOT_TOKEN.includes('8449338128:AAEI8pPvhqT3qDxCKfwELvq8IGp4BKqdzD8') || TG_CHAT_ID.includes('443675424')) {
-                alert('Будь ласка, вкажіть ваш дійсний TG_BOT_TOKEN та TG_CHAT_ID у коді файлу!');
-                return;
-            }
 
             try {
                 const response = await fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage`, {
